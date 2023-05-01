@@ -1,0 +1,19 @@
+<div fxLayout="row" fxLayoutAlign="center strech" [ngStyle]="{'overflow-y': 'hidden', 'padding-bottom': '20px'}"  >
+  <mat-card fxFlex.gt-xs="65" fxFlex.xs>
+    <mat-card-header>
+      <mat-card-title>Kosár tartalma:</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <cart-component [cart]="cart" [withActions]="false"></cart-component>
+      <mat-divider></mat-divider>
+    </mat-card-content>
+    <mat-card-actions fxLayout.xs="column" fxLayout.gt-xs="row" fxLayoutAlign="center strech" fxLayoutGap="5px">
+      <button mat-stroked-button (click)="goBack()">Vissza</button>
+      <button mat-flat-button color="primary" (click)="finishShopping()" matTooltip="Fizetés átvételkor">Vásárlás
+      </button>
+    </mat-card-actions>
+    <mat-card-footer>
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </mat-card-footer>
+  </mat-card>
+</div>

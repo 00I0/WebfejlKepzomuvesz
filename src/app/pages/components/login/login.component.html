@@ -1,0 +1,16 @@
+<div fxLayout="row" fxLayoutAlign="center strech" style="overflow-y: hidden; padding-bottom: 20px">
+  <div fxLayout="column" fxFlex.gt-xs="65" fxFlex.xs>
+    <mat-form-field>
+      <mat-label>Email:</mat-label>
+      <input id="email" type="text" [formControl]="email" matInput>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Jelszó:</mat-label>
+      <input type="password" [formControl]="password" matInput>
+    </mat-form-field>
+    <span fxLayout.xs="column" fxLayout.gt-xs="row"  fxLayoutAlign="center strech" fxLayoutGap="5px">
+      <button mat-raised-button color="primary" (click)="login()">Bejelentkezés</button>
+      <button mat-raised-button [routerLink]="'/signup'">Regisztráció</button>
+    </span>
+  </div>
+</div>

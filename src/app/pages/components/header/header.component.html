@@ -1,0 +1,32 @@
+<mat-toolbar fxLayout="row" fxLayoutAlign="space-between center"
+             style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px; position: fixed; z-index: 999;">
+
+  <a [routerLink]="'/shop'" [ngClass]="'very_special'">
+    Bio shop
+  </a>
+  <div fxHide.xs>
+    <button mat-icon-button [matMenuTriggerFor]="cartMenu" *ngIf="currentUser" matTooltip="Kosár"
+            style="margin-right: 5px">
+      <mat-icon [matBadge]="cart?.items?.length || ''" matBadgeColor="warn">shopping_cart</mat-icon>
+    </button>
+
+    <button mat-icon-button *ngIf="!currentUser" [routerLink]="'/login'" matTooltip="Bejelentkezés">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+
+    <button mat-icon-button *ngIf="currentUser" [routerLink]="'/profile'" matTooltip="Profil">
+      <mat-icon style="color: limegreen;">account_circle</mat-icon>
+    </button>
+
+    <mat-menu #cartMenu="matMenu">
+      <cart-component *ngIf="cart" [cart]="cart"></cart-component>
+    </mat-menu>
+  </div>
+
+  <button mat-icon-button (click)="sidenav.toggle()" fxHide.gt-xs>
+    <mat-icon>menu</mat-icon>
+  </button>
+</mat-toolbar>
+<style>
+
+</style>

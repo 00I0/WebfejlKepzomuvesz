@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ib471-bio": {
+      "hosting": {
+        "Bio": [
+          "ib471-bio"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ib471-bio"
+  }
+}

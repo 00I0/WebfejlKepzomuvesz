@@ -1,0 +1,12 @@
+<div fxLayout="row wrapped" fxLayoutAlign="space-evenly" fxLayoutGap="20grid">
+
+
+  <store-thumbnail-component *ngFor="let item of items | async"
+                             [item]="item"
+                             (addToCart)="addItemToCart($event)"
+
+                             fxFlex.gt-xs="35" fxFlex.xs="100">
+  </store-thumbnail-component>
+
+</div>
+

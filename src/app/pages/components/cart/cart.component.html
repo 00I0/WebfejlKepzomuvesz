@@ -1,0 +1,36 @@
+<div fxLayout="column" style="margin-left: 3px; margin-right: 3px">
+  <div *ngIf="!cartItems || (cart && cart.items.length == 0)" style="text-align: center">
+    Még nincs semmi a kosárban
+  </div>
+  <div *ngIf="cartItems">
+    <div *ngFor="let itemAndCount of cartItems | async" fxLayout="row" fxLayoutAlign="space-between center">
+      <div fxFlex="35">
+        {{itemAndCount.item.name}}
+      </div>
+      <div fxFlex="45" fxLayout="row" fxLayoutAlign="center strech">
+        <button mat-icon-button matTooltip="Egy kivétele" (click)="removeFromCart(itemAndCount.item)">
+          <mat-icon>exposure_neg_1</mat-icon>
+        </button>
+        <p>{{itemAndCount.count}}</p>
+        <button mat-icon-button matTooltip="Még egy hozzáadása" (click)="addToCart(itemAndCount.item)">
+          <mat-icon>exposure_plus_1</mat-icon>
+        </button>
+      </div>
+      <div fxFlex="20">
+        <div fxLayout="column" fxLayoutAlign="space-between end">
+          {{(itemAndCount.item.price * (itemAndCount.count || 0)) || 0 | huf}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+  <div *ngIf="withActions" fxLayout.xs="column" fxLayout.gt-xs="row"  fxLayoutAlign="center strech" fxLayoutGap="5px"
+       style="margin-top: 5px">
+    <button mat-flat-button color="accent" (click)="clearCart()">
+      <span style="padding: 3px">Kosár kiüritése</span>
+    </button>
+    <button mat-flat-button color="accent" [routerLink]="'/checkout'">
+      <span style="padding: 3px">Tovább a vásárláshoz</span>
+    </button>
+  </div>
+</div>
